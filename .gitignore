@@ -1,0 +1,8 @@
+.DS_Store
+
+wanga_gut/node_modules
+wanga_gut/build
+wanga_gut/ios/Pods
+wanga_gut/vendor
+wanga_gut/.metro-health-check*
+
