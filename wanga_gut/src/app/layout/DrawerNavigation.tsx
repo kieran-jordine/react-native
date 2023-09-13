@@ -3,7 +3,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationProp, RouteProp} from '@react-navigation/native';
 
-import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../../screens/HomeScreen';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
