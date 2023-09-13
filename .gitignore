@@ -3,6 +3,8 @@
 wanga_gut/node_modules
 wanga_gut/build
 wanga_gut/ios/Pods
+wanga_gut/ios/Podfile.lock
 wanga_gut/vendor
 wanga_gut/.metro-health-check*
-
+wanga_gut/package-lock.json
+wanga_gut/Gemfile.lock
