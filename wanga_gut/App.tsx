@@ -2,17 +2,27 @@ import 'react-native-gesture-handler';
 
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {PaperProvider} from 'react-native-paper';
+
+import {
+  ThemeContext,
+  useThemeContextProvider,
+} from './src/app/context_providers';
 import StackNavigation from './src/app/navigation/StackNavigation';
-// import DrawerNavigation from './src/app/navigation/DrawerNavigation';
-// import TabNavigation from './src/app/layout/TabNavigation';
 
 function App(): JSX.Element {
+  const {theme, setTheme, navTheme, paperTheme} = useThemeContextProvider();
   return (
-    <NavigationContainer>
-      <StackNavigation />
-      {/* <DrawerNavigation /> */}
-      {/* <TabNavigation /> */}
-    </NavigationContainer>
+    <ThemeContext.Provider value={{theme, setTheme}}>
+      <SafeAreaProvider>
+        <PaperProvider theme={paperTheme}>
+          <NavigationContainer theme={navTheme}>
+            <StackNavigation />
+          </NavigationContainer>
+        </PaperProvider>
+      </SafeAreaProvider>
+    </ThemeContext.Provider>
   );
 }
 

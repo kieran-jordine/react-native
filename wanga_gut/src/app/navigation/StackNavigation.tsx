@@ -13,16 +13,12 @@ const Drawer = createDrawerNavigator();
 
 export default function StackNavigation() {
   return (
-    <Stack.Navigator
-      id="Root"
-      initialRouteName="Home"
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: 'red',
-        },
-        headerTintColor: '#fff',
-      }}>
-      <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Drawer"
+        options={{headerShown: false}}
+        component={DrawerScreen}
+      />
       <Stack.Screen
         name="Recipe"
         options={{
@@ -36,22 +32,14 @@ export default function StackNavigation() {
         }}
         component={RecipeScreen}
       />
-      <Stack.Screen name="Drawer" component={DrawerScreen} />
     </Stack.Navigator>
   );
 }
 
 function DrawerScreen() {
   return (
-    <Drawer.Navigator
-      id="Drawer"
-      initialRouteName="Feed"
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: 'red',
-        },
-        headerTintColor: '#fff',
-      }}>
+    <Drawer.Navigator>
+      <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="Feed" component={FeedScreen} />
     </Drawer.Navigator>
   );
