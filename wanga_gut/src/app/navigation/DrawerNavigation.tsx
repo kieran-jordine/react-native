@@ -1,13 +1,13 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationProp, RouteProp} from '@react-navigation/native';
+// import {NavigationProp, RouteProp} from '@react-navigation/native';
 
 import HomeScreen from '../../screens/HomeScreen';
 import RecipeScreen from '../../screens/RecipeScreen';
 
-const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigation() {
   return (
@@ -35,7 +35,7 @@ function StackScreen() {
   );
 }
 
-export interface NavProp {
-  navigation: NavigationProp<any, any>;
-  route: RouteProp<any, any>;
-}
+// export interface NavProp {
+//   navigation: NavigationProp<any, any>;
+//   route: RouteProp<any, any>;
+// }

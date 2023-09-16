@@ -13,15 +13,18 @@ import {
   View,
   useWindowDimensions,
 } from 'react-native';
+import {RecipeProps} from '../app/navigation/StackNavigation';
 
 const cols = 3;
 
-export default function RecipeScreen() {
+export default function RecipeScreen({route, navigation}: RecipeProps) {
   const {width, height} = useWindowDimensions();
   const margin = 10;
   const numerator = width - (cols + 1) * margin;
   const denominator = cols;
   const widthOf = numerator / denominator;
+  console.log(route);
+  console.log(navigation.canGoBack());
   return (
     <>
       <StatusBar barStyle={'light-content'} backgroundColor={'red'} />
@@ -36,14 +39,14 @@ export default function RecipeScreen() {
           showsVerticalScrollIndicator={false}
           numColumns={cols}
           data={[1, 2, 3]}
-          renderItem={item => renderRecipe(item.item)}
+          renderItem={item => renderItem(item.item)}
         />
       </View>
     </>
   );
 }
 
-function renderRecipe(item: number) {
+function renderItem(item: number) {
   return (
     <Pressable
       style={style.container}

@@ -13,15 +13,17 @@ import {
 import {Recipe} from '../data/data';
 import {getCategoryName, getRecipes} from '../data/recipe_api';
 import {style} from '../app/theme';
-import {NavigationProp} from '@react-navigation/native';
 import {Button} from 'react-native-paper';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 
-function HomeScreen({navigation}) {
+function HomeScreen() {
+  const navigation = useNavigation();
   return (
     <>
       <StatusBar barStyle={'light-content'} backgroundColor={'red'} />
-
-      <Button mode="contained" onPress={() => navigation.navigate('Recipe')}>
+      <Button
+        mode="contained"
+        onPress={() => navigation.navigate('Recipe', {recipeId: 2})}>
         Nav
       </Button>
       <FlatList
@@ -41,7 +43,9 @@ function renderRecipe(
 ) {
   return (
     <Pressable
-      onPress={() => navigation.navigate('Recipe', {recipe: recipe.item})}>
+      onPress={() =>
+        navigation.navigate('Recipe', {recipeId: recipe.item.recipeId})
+      }>
       <View style={style.container}>
         <Image style={style.photo} source={{uri: recipe.item.photo_url}} />
         <Text style={style.title}>{recipe.item.title}</Text>
