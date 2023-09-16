@@ -2,76 +2,67 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
+import {Button, IconButton, Text} from 'react-native-paper';
+import Statusbar from '../components/Statusbar';
+import {RootStackProps} from '../app/navigation/types';
 import {
-  Alert,
-  Dimensions,
-  FlatList,
-  Pressable,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  useWindowDimensions,
-} from 'react-native';
-import {RecipeProps} from '../app/navigation/StackNavigation';
+  getCategoryName,
+  getPreparationTime,
+  getRecipe,
+} from '../data/recipe_api';
+import HeaderImage from '../components/HeaderImage';
 
-const cols = 3;
+export default function RecipeScreen({route}: RootStackProps<'Recipe'>) {
+  const recipe = getRecipe(route.params.recipeId);
 
-export default function RecipeScreen({route, navigation}: RecipeProps) {
-  const {width, height} = useWindowDimensions();
-  const margin = 10;
-  const numerator = width - (cols + 1) * margin;
-  const denominator = cols;
-  const widthOf = numerator / denominator;
-  console.log(route);
-  console.log(navigation.canGoBack());
   return (
     <>
-      <StatusBar barStyle={'light-content'} backgroundColor={'red'} />
-      <View>
-        <Text style={{fontSize: 24}}>{`width:${width}, height=${height}`}</Text>
-        <Text style={{fontSize: 24}}>{`numerator=${numerator}`}</Text>
-        <Text
-          style={{fontSize: 24}}>{`denominator/columns=${denominator}`}</Text>
-        <Text style={{fontSize: 24}}>{`margin=${margin}`}</Text>
-        <Text style={{fontSize: 24}}>{`width-of-item=${widthOf}`}</Text>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          numColumns={cols}
-          data={[1, 2, 3]}
-          renderItem={item => renderItem(item.item)}
-        />
-      </View>
+      <Statusbar />
+      {recipe && (
+        <View style={{flex: 1}}>
+          <HeaderImage uri={recipe.photo_url} />
+          <ScrollView contentContainerStyle={style.container}>
+            <Text variant="headlineLarge" style={style.titleText}>
+              {recipe.title}
+            </Text>
+            <Text variant="headlineMedium" style={style.categoryText}>
+              {getCategoryName(recipe.categoryId)}
+            </Text>
+            <View style={style.row}>
+              <IconButton icon="clock-outline" />
+              <Text variant="titleLarge">
+                {getPreparationTime(recipe.time)}
+              </Text>
+            </View>
+            <Button style={style.mb8} mode="outlined">
+              View Ingredients
+            </Button>
+            <Text variant="bodyLarge">{recipe.description}</Text>
+          </ScrollView>
+        </View>
+      )}
     </>
   );
 }
 
-function renderItem(item: number) {
-  return (
-    <Pressable
-      style={style.container}
-      onPress={() => Alert.alert('title', 'message', [])}>
-      <View>
-        <Text style={{backgroundColor: 'transparent'}}>{item}</Text>
-      </View>
-    </Pressable>
-  );
-}
-
-const {width} = Dimensions.get('screen');
-const margin = 10;
-const numerator = width - (cols + 1) * margin; // extra 1 for margin-right of last column
-const denominator = cols;
-const widthOfItem = numerator / denominator;
-
 const style = StyleSheet.create({
   container: {
-    borderWidth: 0.4,
-    borderColor: 'grey',
-    marginLeft: margin,
-    width: widthOfItem,
-    height: widthOfItem,
+    paddingHorizontal: 30,
+    alignItems: 'center',
+    paddingBottom: 60,
+  },
+  titleText: {
+    marginVertical: 16,
+  },
+  categoryText: {
+    marginBottom: 8,
+  },
+  row: {
+    flexDirection: 'row',
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  mb8: {marginBottom: 8},
 });

@@ -13,7 +13,6 @@ import {
 import {Recipe} from '../data/data';
 import {getCategoryName, getRecipes} from '../data/recipe_api';
 import {style} from '../app/theme';
-import {Button} from 'react-native-paper';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 function HomeScreen() {
@@ -21,11 +20,6 @@ function HomeScreen() {
   return (
     <>
       <StatusBar barStyle={'light-content'} backgroundColor={'red'} />
-      <Button
-        mode="contained"
-        onPress={() => navigation.navigate('Recipe', {recipeId: 2})}>
-        Nav
-      </Button>
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={2}

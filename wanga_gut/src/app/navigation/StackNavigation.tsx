@@ -23,7 +23,19 @@ export default function StackNavigation() {
         headerTintColor: '#fff',
       }}>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Recipe" component={RecipeScreen} />
+      <Stack.Screen
+        name="Recipe"
+        options={{
+          headerTransparent: true,
+          headerBackTitleVisible: false,
+          headerTitle: '',
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+          // headerTintColor: 'black',
+        }}
+        component={RecipeScreen}
+      />
       <Stack.Screen name="Drawer" component={DrawerScreen} />
     </Stack.Navigator>
   );
