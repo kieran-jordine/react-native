@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {Recipe} from '../data/data';
 import {getCategoryName, getRecipes} from '../data/recipe_api';
-import {style} from '../app/theme';
+import {style} from '../app/style';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 function HomeScreen() {
