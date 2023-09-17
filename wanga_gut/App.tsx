@@ -10,13 +10,16 @@ import {
   useThemeContextProvider,
 } from './src/app/context_providers';
 import StackNavigation from './src/app/navigation/StackNavigation';
+import {RnPaperIcons} from './src/app/RnPaperIcons';
 
 function App(): JSX.Element {
   const {theme, setTheme, navTheme, paperTheme} = useThemeContextProvider();
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>
       <SafeAreaProvider>
-        <PaperProvider theme={paperTheme}>
+        <PaperProvider
+          theme={paperTheme}
+          settings={{icon: props => RnPaperIcons(props)}}>
           <NavigationContainer theme={navTheme}>
             <StackNavigation />
           </NavigationContainer>

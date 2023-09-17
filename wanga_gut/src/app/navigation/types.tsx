@@ -3,16 +3,17 @@ import {NavigatorScreenParams} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
-  Home: undefined;
-  Recipe: {recipeId: number};
   Drawer: NavigatorScreenParams<DrawerParamList>;
+  Recipe: {recipeId: number};
 };
 export type RootStackProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;
 
 export type DrawerParamList = {
+  Home: undefined;
   Settings: undefined;
   Feed: {sort: 'latest' | 'top'};
+  Help: undefined;
 };
 export type DrawerProps<T extends keyof DrawerParamList> = DrawerScreenProps<
   DrawerParamList,

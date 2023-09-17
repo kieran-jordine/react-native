@@ -1,7 +1,12 @@
 import 'react-native-gesture-handler';
 
 import React, {useContext} from 'react';
-import {List, Switch, useTheme as paperTheme} from 'react-native-paper';
+import {
+  List,
+  Searchbar,
+  Switch,
+  useTheme as paperTheme,
+} from 'react-native-paper';
 import {useTheme as navTheme} from '@react-navigation/native';
 import {ScrollView} from 'react-native';
 import Statusbar from '../components/Statusbar';
@@ -43,6 +48,7 @@ export default function SettingsScreen() {
             />
           ))}
         </List.Accordion>
+        <Searchbar value="" placeholder="Search ..." />
       </ScrollView>
     </>
   );

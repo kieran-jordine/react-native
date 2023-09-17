@@ -6,7 +6,6 @@ import {
   Image,
   ListRenderItemInfo,
   Pressable,
-  StatusBar,
   Text,
   View,
 } from 'react-native';
@@ -14,12 +13,13 @@ import {Recipe} from '../data/data';
 import {getCategoryName, getRecipes} from '../data/recipe_api';
 import {style} from '../app/style';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
+import Statusbar from '../components/Statusbar';
 
 function HomeScreen() {
   const navigation = useNavigation();
   return (
     <>
-      <StatusBar barStyle={'light-content'} backgroundColor={'red'} />
+      <Statusbar />
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={2}
