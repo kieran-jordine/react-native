@@ -5,16 +5,25 @@ import {
   Dimensions,
   FlatList,
   Pressable,
-  StatusBar,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
+import {Text} from 'react-native-paper';
 
 export default function FeedScreen() {
+  function renderItem(item: number) {
+    return (
+      <Pressable
+        style={style.container}
+        onPress={() => Alert.alert('title', 'message', [])}>
+        <View>
+          <Text style={{backgroundColor: 'transparent'}}>{item}</Text>
+        </View>
+      </Pressable>
+    );
+  }
   return (
     <>
-      <StatusBar barStyle={'light-content'} backgroundColor={'red'} />
       <View>
         <Text style={{fontSize: 24}}>FeedScreen</Text>
         <FlatList
@@ -25,18 +34,6 @@ export default function FeedScreen() {
         />
       </View>
     </>
-  );
-}
-
-function renderItem(item: number) {
-  return (
-    <Pressable
-      style={style.container}
-      onPress={() => Alert.alert('title', 'message', [])}>
-      <View>
-        <Text style={{backgroundColor: 'transparent'}}>{item}</Text>
-      </View>
-    </Pressable>
   );
 }
 

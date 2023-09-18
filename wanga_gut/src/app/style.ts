@@ -1,49 +1,20 @@
-import {StyleSheet, Dimensions} from 'react-native';
-
-// screen sizing
-const {width, height} = Dimensions.get('window');
-// orientation must fixed
-const SCREEN_WIDTH = width < height ? width : height;
-
-const NUM_COLUMNS = 2;
-// item size
-const RECIPE_ITEM_HEIGHT = 150;
-const RECIPE_ITEM_MARGIN = 10;
+import {StyleSheet} from 'react-native';
+import {EdgeInsets} from 'react-native-safe-area-context';
 
 export const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: RECIPE_ITEM_MARGIN,
-    marginTop: 10,
-    width:
-      (SCREEN_WIDTH - (NUM_COLUMNS + 1) * RECIPE_ITEM_MARGIN) / NUM_COLUMNS,
-    height: RECIPE_ITEM_HEIGHT + 75,
-    borderColor: '#cccccc',
-    borderWidth: 0.5,
-    borderRadius: 15,
-  },
-  photo: {
-    width:
-      (SCREEN_WIDTH - (NUM_COLUMNS + 1) * RECIPE_ITEM_MARGIN) / NUM_COLUMNS,
-    height: RECIPE_ITEM_HEIGHT,
-    borderRadius: 15,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-  },
-  title: {
-    flex: 1,
-    fontSize: 17,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#444444',
-    marginTop: 3,
-    marginRight: 5,
-    marginLeft: 5,
-  },
-  category: {
-    marginTop: 5,
-    marginBottom: 5,
-  },
+  row: {flexDirection: 'row'},
+  center: {justifyContent: 'center', alignItems: 'center'},
+  m3: {margin: 3},
+  m5: {margin: 5},
+  m7: {margin: 7},
 });
+
+type margins = 'top' | 'bottom' | 'right' | 'left';
+export function insetsToMargins(insets: EdgeInsets, exclude: margins[]) {
+  return {
+    marginLeft: exclude.includes('left') ? null : insets.left,
+    marginRight: exclude.includes('right') ? null : insets.right,
+    marginBottom: exclude.includes('bottom') ? null : insets.bottom,
+    marginTop: exclude.includes('top') ? null : insets.top,
+  };
+}
