@@ -6,6 +6,8 @@ import DrawerContent from './drawer/DrawerContent';
 import {HeaderLeft, HeaderRight} from './drawer/DrawerHeader';
 import HomeScreen from '../../screens/HomeScreen';
 import RecipeScreen from '../../screens/RecipeScreen';
+import IngredientListScreen from '../../screens/IngredientListScreen';
+import IngredientScreen from '../../screens/IngredientScreen';
 import FeedScreen from '../../screens/FeedScreen';
 import SettingsScreen from '../../screens/SettingsScreen';
 import HelpScreen from '../../screens/HelpScreen';
@@ -17,7 +19,10 @@ const Drawer = createDrawerNavigator<DrawerParamList>();
 
 export default function StackNavigation() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerBackTitleVisible: false,
+      }}>
       <Stack.Screen
         name="Drawer"
         options={{headerShown: false}}
@@ -32,9 +37,18 @@ export default function StackNavigation() {
           headerStyle: {
             backgroundColor: 'transparent',
           },
-          // headerTintColor: 'black',
         }}
         component={RecipeScreen}
+      />
+      <Stack.Screen
+        name="IngredientList"
+        initialParams={{recipeTitle: ''}}
+        component={IngredientListScreen}
+      />
+      <Stack.Screen
+        name="Ingredient"
+        initialParams={{ingredientName: ''}}
+        component={IngredientScreen}
       />
     </Stack.Navigator>
   );

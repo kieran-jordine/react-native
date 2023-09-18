@@ -5,6 +5,8 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 export type RootStackParamList = {
   Drawer: NavigatorScreenParams<DrawerParamList>;
   Recipe: {recipeId: number};
+  IngredientList: {recipeId: number; recipeTitle: string};
+  Ingredient: {ingredientId: number; ingredientName: string};
 };
 export type RootStackProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;

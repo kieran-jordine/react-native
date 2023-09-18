@@ -4,7 +4,6 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import {Button, IconButton, Text} from 'react-native-paper';
-import Statusbar from '../components/Statusbar';
 import {RootStackProps} from '../app/navigation/types';
 import {
   getCategoryName,
@@ -13,12 +12,14 @@ import {
 } from '../data/recipe_api';
 import HeaderImage from '../components/HeaderImage';
 
-export default function RecipeScreen({route}: RootStackProps<'Recipe'>) {
+export default function RecipeScreen({
+  route,
+  navigation,
+}: RootStackProps<'Recipe'>) {
   const recipe = getRecipe(route.params.recipeId);
 
   return (
     <>
-      <Statusbar />
       {recipe && (
         <View style={{flex: 1}}>
           <HeaderImage uri={recipe.photo_url} />
@@ -35,7 +36,15 @@ export default function RecipeScreen({route}: RootStackProps<'Recipe'>) {
                 {getPreparationTime(recipe.time)}
               </Text>
             </View>
-            <Button style={style.mb8} mode="outlined">
+            <Button
+              style={style.mb8}
+              mode="outlined"
+              onPress={() =>
+                navigation.navigate('IngredientList', {
+                  recipeId: recipe.recipeId,
+                  recipeTitle: recipe.title,
+                })
+              }>
               View Ingredients
             </Button>
             <Text variant="bodyLarge">{recipe.description}</Text>
