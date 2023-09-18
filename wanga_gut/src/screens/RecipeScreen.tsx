@@ -30,7 +30,7 @@ export default function RecipeScreen({route}: RootStackProps<'Recipe'>) {
               {getCategoryName(recipe.categoryId)}
             </Text>
             <View style={style.row}>
-              <IconButton icon="clock-outline" />
+              <IconButton icon="punch-clock" />
               <Text variant="titleLarge">
                 {getPreparationTime(recipe.time)}
               </Text>

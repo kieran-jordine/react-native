@@ -8,11 +8,13 @@ import {
 import {IconButton} from 'react-native-paper';
 import {Alert, StyleSheet} from 'react-native';
 
-export default function DrawerContentApp(props: DrawerContentComponentProps) {
+export default function DrawerContent(props: DrawerContentComponentProps) {
   const {state} = props;
 
   function icon(iconProps: {}) {
-    return <IconButton icon="help" {...iconProps} style={style.iconStyle} />;
+    return (
+      <IconButton icon="help-outline" {...iconProps} style={style.iconStyle} />
+    );
   }
 
   return (

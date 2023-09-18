@@ -6,14 +6,18 @@ import {
   Image,
   ListRenderItemInfo,
   Pressable,
-  Text,
+  // Text,
   View,
 } from 'react-native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+
 import {Recipe} from '../data/data';
 import {getCategoryName, getRecipes} from '../data/recipe_api';
 import {style} from '../app/style';
-import {NavigationProp, useNavigation} from '@react-navigation/native';
 import Statusbar from '../components/Statusbar';
+import {Text} from 'react-native-paper';
+
+// const numCols = 2;
 
 function HomeScreen() {
   const navigation = useNavigation();
@@ -42,10 +46,8 @@ function renderRecipe(
       }>
       <View style={style.container}>
         <Image style={style.photo} source={{uri: recipe.item.photo_url}} />
-        <Text style={style.title}>{recipe.item.title}</Text>
-        <Text style={style.category}>
-          {getCategoryName(recipe.item.categoryId)}
-        </Text>
+        <Text>{recipe.item.title}</Text>
+        <Text>{getCategoryName(recipe.item.categoryId)}</Text>
       </View>
     </Pressable>
   );

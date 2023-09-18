@@ -2,7 +2,7 @@ import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import DrawerContentApp from './drawer/DrawerContentApp';
+import DrawerContent from './drawer/DrawerContent';
 import {HeaderLeft, HeaderRight} from './drawer/DrawerHeader';
 import HomeScreen from '../../screens/HomeScreen';
 import RecipeScreen from '../../screens/RecipeScreen';
@@ -47,7 +47,7 @@ function DrawerScreen() {
         headerLeft: () => HeaderLeft(),
         headerRight: () => HeaderRight(),
       }}
-      drawerContent={props => DrawerContentApp(props)}>
+      drawerContent={props => DrawerContent(props)}>
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="Settings" component={SettingsScreen} />
       <Drawer.Screen name="Feed" component={FeedScreen} />
