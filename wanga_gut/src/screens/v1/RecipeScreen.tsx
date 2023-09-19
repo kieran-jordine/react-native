@@ -10,7 +10,7 @@ import {
   getPreparationTime,
   getRecipe,
 } from '../../data/recipe_api';
-import HeaderImage from '../../components/HeaderImage';
+import HeaderImage from '../../components/v1/HeaderImage';
 
 export default function RecipeScreen({
   route,

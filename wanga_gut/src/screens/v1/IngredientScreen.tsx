@@ -5,7 +5,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 
 import {getIngredient, getRecipesWithIngredient} from '../../data/recipe_api';
 import {RootStackProps} from '../../app/navigation/types';
-import RecipesList from '../../components/RecipesList';
+import RecipesList from '../../components/v1/RecipesList';
 
 export default function IngredientScreen() {
   const navigation = useNavigation();
