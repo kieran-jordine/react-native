@@ -12,11 +12,11 @@ import {Text} from 'react-native-paper';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-import {Ingredient} from '../data/data';
-import {getIngredients, getMeasurement, getRecipe} from '../data/recipe_api';
-import {insetsToMargins} from '../app/style';
-import {gridOption} from '../utils/utils';
-import {RootStackProps} from '../app/navigation/types';
+import {Ingredient} from '../../data/data';
+import {getIngredients, getMeasurement, getRecipe} from '../../data/recipe_api';
+import {insetsToMargins} from '../../app/style';
+import {gridOption} from '../../utils/utils';
+import {RootStackProps} from '../../app/navigation/types';
 
 const margin = 7;
 

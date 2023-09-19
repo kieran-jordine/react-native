@@ -1,10 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Text, View} from 'react-native';
-import Statusbar from '../components/Statusbar';
+import Statusbar from '../../components/Statusbar';
 import {Button} from 'react-native-paper';
 // import {useNavigation} from '@react-navigation/native';
-import {DrawerProps} from '../app/navigation/types';
+import {DrawerProps} from '../../app/navigation/types';
 
 export default function HelpScreen({navigation}: DrawerProps<'Help'>) {
   return (

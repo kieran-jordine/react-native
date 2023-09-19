@@ -4,13 +4,13 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import {Button, IconButton, Text} from 'react-native-paper';
-import {RootStackProps} from '../app/navigation/types';
+import {RootStackProps} from '../../app/navigation/types';
 import {
   getCategoryName,
   getPreparationTime,
   getRecipe,
-} from '../data/recipe_api';
-import HeaderImage from '../components/HeaderImage';
+} from '../../data/recipe_api';
+import HeaderImage from '../../components/HeaderImage';
 
 export default function RecipeScreen({
   route,

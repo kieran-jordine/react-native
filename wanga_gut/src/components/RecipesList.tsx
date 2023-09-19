@@ -55,9 +55,11 @@ export default function RecipesList({recipes}: Props) {
               {recipe.item.title}
             </Text>
           </View>
-          <Text variant="titleMedium" style={style.categoryText}>
-            {getCategoryName(recipe.item.categoryId)}
-          </Text>
+          <Pressable onPress={() => navigation.navigate('Categories')}>
+            <Text variant="titleMedium" style={style.categoryText}>
+              {getCategoryName(recipe.item.categoryId)}
+            </Text>
+          </Pressable>
         </View>
       </Pressable>
     );

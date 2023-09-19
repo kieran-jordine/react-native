@@ -4,13 +4,15 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import DrawerContent from './drawer/DrawerContent';
 import {HeaderLeft, HeaderRight} from './drawer/DrawerHeader';
-import HomeScreen from '../../screens/HomeScreen';
-import RecipeScreen from '../../screens/RecipeScreen';
-import IngredientListScreen from '../../screens/IngredientListScreen';
-import IngredientScreen from '../../screens/IngredientScreen';
-import FeedScreen from '../../screens/FeedScreen';
-import SettingsScreen from '../../screens/SettingsScreen';
-import HelpScreen from '../../screens/HelpScreen';
+import HomeScreen from '../../screens/v1/HomeScreen';
+import RecipeScreen from '../../screens/v1/RecipeScreen';
+import IngredientListScreen from '../../screens/v1/IngredientListScreen';
+import IngredientScreen from '../../screens/v1/IngredientScreen';
+import CategoryListScreen from '../../screens/v1/CategoryListScreen';
+import CategoryScreen from '../../screens/v1/CategoryScreen';
+import FeedScreen from '../../screens/v1/FeedScreen';
+import SettingsScreen from '../../screens/v1/SettingsScreen';
+import HelpScreen from '../../screens/v1/HelpScreen';
 
 import {DrawerParamList, RootStackParamList} from './types';
 
@@ -50,6 +52,8 @@ export default function StackNavigation() {
         initialParams={{ingredientName: ''}}
         component={IngredientScreen}
       />
+      <Stack.Screen name="Categories" component={CategoryListScreen} />
+      <Stack.Screen name="Category" component={CategoryScreen} />
     </Stack.Navigator>
   );
 }

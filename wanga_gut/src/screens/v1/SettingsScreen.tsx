@@ -4,8 +4,8 @@ import React, {useContext} from 'react';
 import {ScrollView} from 'react-native';
 import {List, Switch, useTheme as paperTheme} from 'react-native-paper';
 import {useTheme as navTheme} from '@react-navigation/native';
-import Statusbar from '../components/Statusbar';
-import {ThemeContext, ThemeContextObject} from '../app/context_providers';
+import Statusbar from '../../components/Statusbar';
+import {ThemeContext, ThemeContextObject} from '../../app/context_providers';
 
 export default function SettingsScreen() {
   const {colors: navColors, dark} = navTheme();

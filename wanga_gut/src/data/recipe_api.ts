@@ -48,3 +48,15 @@ export function getRecipesWithIngredient(ingredientId: number) {
       recipe.ingredients.find(ing => ing[0] === ingredientId) !== undefined,
   );
 }
+
+export function getCategories() {
+  return categories;
+}
+
+export function getRecipeCount(categoryId: number) {
+  return recipes.filter(recipe => recipe.categoryId === categoryId).length;
+}
+
+export function getRecipesByCategory(categoryId: number) {
+  return recipes.filter(recipe => recipe.categoryId === categoryId);
+}

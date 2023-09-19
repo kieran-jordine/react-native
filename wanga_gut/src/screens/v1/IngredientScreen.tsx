@@ -3,9 +3,9 @@ import {Image, StyleSheet, useWindowDimensions} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useNavigation, useRoute} from '@react-navigation/native';
 
-import {getIngredient, getRecipesWithIngredient} from '../data/recipe_api';
-import {RootStackProps} from '../app/navigation/types';
-import RecipesList from '../components/RecipesList';
+import {getIngredient, getRecipesWithIngredient} from '../../data/recipe_api';
+import {RootStackProps} from '../../app/navigation/types';
+import RecipesList from '../../components/RecipesList';
 
 export default function IngredientScreen() {
   const navigation = useNavigation();
