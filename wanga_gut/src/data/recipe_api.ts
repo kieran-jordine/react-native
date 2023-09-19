@@ -41,3 +41,10 @@ export function getMeasurement(recipeId: number, ingredientId: number) {
   );
   return ingredient ? String(ingredient[1]) : '';
 }
+
+export function getRecipesWithIngredient(ingredientId: number) {
+  return recipes.filter(
+    recipe =>
+      recipe.ingredients.find(ing => ing[0] === ingredientId) !== undefined,
+  );
+}
