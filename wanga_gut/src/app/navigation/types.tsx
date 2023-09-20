@@ -14,6 +14,7 @@ export type RootStackProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;
 
 export type DrawerParamList = {
+  HomeV2: undefined;
   Home: undefined;
   Settings: undefined;
   Feed: {sort: 'latest' | 'top'};

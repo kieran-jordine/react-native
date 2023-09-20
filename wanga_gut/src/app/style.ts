@@ -7,6 +7,11 @@ export const style = StyleSheet.create({
   m3: {margin: 3},
   m5: {margin: 5},
   m7: {margin: 7},
+  p3: {padding: 3},
+  p5: {padding: 5},
+  p7: {padding: 7},
+  faded: {opacity: 0.5},
+  transparent: {backgroundColor: 'transparent'},
 });
 
 type margins = 'top' | 'bottom' | 'right' | 'left';

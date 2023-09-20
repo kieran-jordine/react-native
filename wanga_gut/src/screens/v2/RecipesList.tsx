@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   FlatList,
@@ -13,18 +12,16 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Text} from 'react-native-paper';
 
 import {gridOption} from '../../utils/utils';
-import {getCategoryName} from '../../data/recipe_api';
 import {insetsToMargins} from '../../app/style';
-import {Recipe} from '../../data/data';
+import {Recipe} from './models';
 
 const margin = 7;
 
 interface Props {
-  recipes: Recipe[];
+  recipes?: Recipe[];
 }
 
 export default function RecipesList({recipes}: Props) {
-  const navigation = useNavigation();
   const insets = useSafeAreaInsets();
   const {columnWidth, columnCount} = gridOption(
     useWindowDimensions().width,
@@ -34,36 +31,32 @@ export default function RecipesList({recipes}: Props) {
 
   function renderRecipe(recipe: ListRenderItemInfo<Recipe>) {
     return (
-      <Pressable
-        onPress={() =>
-          navigation.navigate('Recipe', {recipeId: recipe.item.recipeId})
-        }>
+      <Pressable>
         <View
           style={[
             style.recipeContainer,
-            {width: columnWidth, height: columnWidth + 75},
+            {width: columnWidth, height: columnWidth + 45},
           ]}>
           <View>
             <Image
               style={style.recipePhoto}
               source={{
-                uri: recipe.item.photo_url,
+                uri: recipe.item.strMealThumb,
                 width: columnWidth,
                 height: columnWidth * 0.85,
               }}
             />
-            <Text variant="titleLarge" style={style.titleText}>
-              {recipe.item.title}
+            <Text variant="titleMedium" style={style.titleText}>
+              {recipe.item.strMeal}
             </Text>
           </View>
-          <Pressable onPress={() => navigation.navigate('Categories')}>
-            <Text variant="titleMedium" style={style.categoryText}>
-              {getCategoryName(recipe.item.categoryId)}
-            </Text>
-          </Pressable>
         </View>
       </Pressable>
     );
+  }
+
+  if (!recipes) {
+    return <></>;
   }
 
   return (
@@ -75,7 +68,8 @@ export default function RecipesList({recipes}: Props) {
         numColumns={columnCount}
         data={recipes}
         renderItem={recipe => renderRecipe(recipe)}
-        keyExtractor={item => `${item.recipeId}`}
+        keyExtractor={item => `${item.idMeal}`}
+        nestedScrollEnabled
       />
     </>
   );

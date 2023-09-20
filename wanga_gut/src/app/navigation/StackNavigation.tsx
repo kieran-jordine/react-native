@@ -14,6 +14,8 @@ import FeedScreen from '../../screens/v1/FeedScreen';
 import SettingsScreen from '../../screens/v1/SettingsScreen';
 import HelpScreen from '../../screens/v1/HelpScreen';
 
+import CategoriesScreen from '../../screens/v2/CategoriesScreen';
+
 import {DrawerParamList, RootStackParamList} from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -66,6 +68,7 @@ function DrawerScreen() {
         headerRight: () => HeaderRight(),
       }}
       drawerContent={props => DrawerContent(props)}>
+      <Drawer.Screen name="HomeV2" component={CategoriesScreen} />
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="Settings" component={SettingsScreen} />
       <Drawer.Screen name="Feed" component={FeedScreen} />
