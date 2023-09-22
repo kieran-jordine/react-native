@@ -15,6 +15,7 @@ import SettingsScreen from '../../screens/v1/SettingsScreen';
 import HelpScreen from '../../screens/v1/HelpScreen';
 
 import CategoriesScreen from '../../screens/v2/CategoriesScreen';
+import RecipeDetailScreen from '../../screens/v2/RecipeDetailScreen';
 
 import {DrawerParamList, RootStackParamList} from './types';
 
@@ -56,6 +57,7 @@ export default function StackNavigation() {
       />
       <Stack.Screen name="Categories" component={CategoryListScreen} />
       <Stack.Screen name="Category" component={CategoryScreen} />
+      <Stack.Screen name="RecipeDetail" component={RecipeDetailScreen} />
     </Stack.Navigator>
   );
 }

@@ -14,6 +14,7 @@ import {Text} from 'react-native-paper';
 import {gridOption} from '../../utils/utils';
 import {insetsToMargins} from '../../app/style';
 import {Recipe} from './models';
+import {useNavigation} from '@react-navigation/native';
 
 const margin = 7;
 
@@ -22,6 +23,7 @@ interface Props {
 }
 
 export default function RecipesList({recipes}: Props) {
+  const navigation = useNavigation();
   const insets = useSafeAreaInsets();
   const {columnWidth, columnCount} = gridOption(
     useWindowDimensions().width,
@@ -31,7 +33,10 @@ export default function RecipesList({recipes}: Props) {
 
   function renderRecipe(recipe: ListRenderItemInfo<Recipe>) {
     return (
-      <Pressable>
+      <Pressable
+        onPress={() =>
+          navigation.navigate('RecipeDetail', {recipeId: recipe.item.idMeal})
+        }>
         <View
           style={[
             style.recipeContainer,

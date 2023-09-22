@@ -4,6 +4,9 @@ import {EdgeInsets} from 'react-native-safe-area-context';
 export const style = StyleSheet.create({
   row: {flexDirection: 'row'},
   center: {justifyContent: 'center', alignItems: 'center'},
+  centerx: {justifyContent: 'center'},
+  centery: {alignItems: 'center'},
+  bold: {fontWeight: 'bold'},
   m3: {margin: 3},
   m5: {margin: 5},
   m7: {margin: 7},

@@ -9,6 +9,7 @@ export type RootStackParamList = {
   Ingredient: {ingredientId: number; ingredientName: string};
   Categories: undefined;
   Category: {categoryId: number};
+  RecipeDetail: {recipeId: string};
 };
 export type RootStackProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;
