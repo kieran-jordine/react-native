@@ -1,5 +1,5 @@
-import {DrawerScreenProps} from '@react-navigation/drawer';
 import {NavigatorScreenParams} from '@react-navigation/native';
+import {DrawerScreenProps} from '@react-navigation/drawer';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
