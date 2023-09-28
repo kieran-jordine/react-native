@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {EdgeInsets} from 'react-native-safe-area-context';
+import {EdgeInsets, useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export const style = StyleSheet.create({
   row: {flexDirection: 'row'},
@@ -24,5 +24,14 @@ export function insetsToMargins(insets: EdgeInsets, exclude: margins[]) {
     marginRight: exclude.includes('right') ? null : insets.right,
     marginBottom: exclude.includes('bottom') ? null : insets.bottom,
     marginTop: exclude.includes('top') ? null : insets.top,
+  };
+}
+export function useInsetsToPadding(exclude: margins[]) {
+  const insets = useSafeAreaInsets();
+  return {
+    paddingLeft: exclude.includes('left') ? null : insets.left,
+    paddingRight: exclude.includes('right') ? null : insets.right,
+    paddingBottom: exclude.includes('bottom') ? null : insets.bottom,
+    paddingTop: exclude.includes('top') ? null : insets.top,
   };
 }
