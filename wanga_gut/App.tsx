@@ -13,10 +13,12 @@ import {
 import StackNavigation from './src/app/navigation/StackNavigation';
 import {RnPaperIcons} from './src/app/RnPaperIcons';
 
+const queryClient = new QueryClient();
+
 function App(): JSX.Element {
   const {theme, setTheme, navTheme, paperTheme} = useThemeContextProvider();
   return (
-    <QueryClientProvider client={new QueryClient()}>
+    <QueryClientProvider client={queryClient}>
       <ThemeContext.Provider value={{theme, setTheme}}>
         <SafeAreaProvider>
           <PaperProvider
