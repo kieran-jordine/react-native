@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 import {EdgeInsets, useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export const style = StyleSheet.create({
+  flex1: {flex: 1},
   row: {flexDirection: 'row'},
   center: {justifyContent: 'center', alignItems: 'center'},
   centerx: {justifyContent: 'center'},

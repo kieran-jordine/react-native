@@ -15,6 +15,7 @@ export type RootStackProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;
 
 export type DrawerParamList = {
+  Welcome: undefined;
   HomeV2: undefined;
   Home: undefined;
   Settings: undefined;

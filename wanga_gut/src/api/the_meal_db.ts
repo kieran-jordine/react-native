@@ -24,7 +24,7 @@ export function useRecipesForCategory(category: string) {
   return useQuery<Recipe[], Error>({
     queryKey: ['recipes', category],
     queryFn: () => getRecipesByCategory(category),
-    enabled: false,
+    enabled: !!category,
   });
 }
 
