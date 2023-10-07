@@ -8,7 +8,7 @@ import {
   ThemeContextObject,
   ThemeContext,
   ThemeContextMode,
-} from '../../context_providers';
+} from '../../config/context_providers';
 
 export function HeaderLeft() {
   const navigation = useNavigation<DrawerProps<'Home'>['navigation']>();

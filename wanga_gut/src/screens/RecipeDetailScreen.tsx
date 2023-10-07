@@ -1,22 +1,24 @@
 import React from 'react';
 import {ScrollView, View} from 'react-native';
 import {IconButton, Text} from 'react-native-paper';
-import {style} from '../../app/style';
-import {useRecipeQuery} from '../../api/the_meal_db';
 import {useRoute} from '@react-navigation/native';
-import {RootStackProps} from '../../app/navigation/types';
-import HeaderImage from '../../components/v1/HeaderImage';
+
+import {style} from '../app/style';
+import {useRecipeQuery} from '../api/the_meal_db';
+import {RootStackProps} from '../app/navigation/types';
+import HeaderImage from '../components/HeaderImage';
 import YoutubeIframe from 'react-native-youtube-iframe';
 
 export default function RecipeDetailScreen() {
   const route = useRoute<RootStackProps<'RecipeDetail'>['route']>();
   const recipeQuery = useRecipeQuery(route.params.recipeId);
+
   return (
     <>
-      <ScrollView style={[style.p7]}>
-        {recipeQuery.data && (
-          <View>
-            <HeaderImage uri={recipeQuery.data.strMealThumb} />
+      {recipeQuery.data && (
+        <>
+          <HeaderImage uri={recipeQuery.data.strMealThumb} />
+          <ScrollView style={[style.p7]}>
             <Text variant="titleLarge">{recipeQuery.data.strMeal}</Text>
             <View style={[style.row, style.centery]}>
               <IconButton icon="location-on" />
@@ -49,9 +51,9 @@ export default function RecipeDetailScreen() {
                 />
               </View>
             )}
-          </View>
-        )}
-      </ScrollView>
+          </ScrollView>
+        </>
+      )}
     </>
   );
 }

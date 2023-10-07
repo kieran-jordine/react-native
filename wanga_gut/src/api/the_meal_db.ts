@@ -1,5 +1,5 @@
 import {useQuery} from '@tanstack/react-query';
-import {Category, Recipe, RecipeDetail} from '../screens/v2/models';
+import {Category, Recipe, RecipeDetail} from './models';
 
 const baseUrl = 'https://www.themealdb.com/api/json/v1/1';
 
@@ -20,7 +20,7 @@ async function getRecipesByCategory(category: string): Promise<Recipe[]> {
     .then(res => res.json())
     .then(res => res.meals);
 }
-export function useRecipesForCategory(category: string) {
+export function useRecipesForCategoryQuery(category: string) {
   return useQuery<Recipe[], Error>({
     queryKey: ['recipes', category],
     queryFn: () => getRecipesByCategory(category),

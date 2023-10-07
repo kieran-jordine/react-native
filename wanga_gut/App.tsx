@@ -9,9 +9,9 @@ import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {
   ThemeContext,
   useThemeContextProvider,
-} from './src/app/context_providers';
+} from './src/app/config/context_providers';
 import StackNavigation from './src/app/navigation/StackNavigation';
-import {RnPaperIcons} from './src/app/RnPaperIcons';
+import {RnPaperIcons} from './src/app/config/RnPaperIcons';
 
 const queryClient = new QueryClient();
 

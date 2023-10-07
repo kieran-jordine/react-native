@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   FlatList,
@@ -12,72 +11,76 @@ import {
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Text} from 'react-native-paper';
 
-import {gridOption} from '../../utils/utils';
-import {getCategoryName} from '../../data/recipe_api';
-import {insetsToMargins} from '../../app/style';
-import {Recipe} from '../../data/data';
-
-const margin = 7;
+import {gridOption} from '../utils/utils';
+import {insetsToMargins} from '../app/style';
+import {Recipe} from '../api/models';
+import {useNavigation} from '@react-navigation/native';
 
 interface Props {
-  recipes: Recipe[];
+  recipes?: Recipe[];
+  space: number;
+  columns?: number;
 }
 
-export default function RecipesList({recipes}: Props) {
+RecipesList.defaultProps = {
+  space: 5,
+};
+
+export default function RecipesList({recipes, columns, space}: Props) {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
   const {columnWidth, columnCount} = gridOption(
     useWindowDimensions().width,
     insets.left + insets.right,
-    margin,
+    space,
+    columns,
   );
 
   function renderRecipe(recipe: ListRenderItemInfo<Recipe>) {
     return (
       <Pressable
         onPress={() =>
-          navigation.navigate('Recipe', {recipeId: recipe.item.recipeId})
+          navigation.navigate('RecipeDetail', {recipeId: recipe.item.idMeal})
         }>
         <View
           style={[
             style.recipeContainer,
-            {width: columnWidth, height: columnWidth + 75},
+            {
+              marginLeft: space,
+              marginVertical: space,
+              width: columnWidth,
+              height: columnWidth + 45,
+            },
           ]}>
           <View>
             <Image
               style={style.recipePhoto}
               source={{
-                uri: recipe.item.photo_url,
+                uri: recipe.item.strMealThumb,
                 width: columnWidth,
                 height: columnWidth * 0.85,
               }}
             />
-            <Text variant="titleLarge" style={style.titleText}>
-              {recipe.item.title}
+            <Text variant="titleMedium" style={style.titleText}>
+              {recipe.item.strMeal}
             </Text>
           </View>
-          <Pressable onPress={() => navigation.navigate('Categories')}>
-            <Text variant="titleMedium" style={style.categoryText}>
-              {getCategoryName(recipe.item.categoryId)}
-            </Text>
-          </Pressable>
         </View>
       </Pressable>
     );
   }
 
   return (
-    <>
-      <FlatList
-        key={columnCount}
-        showsVerticalScrollIndicator={false}
-        style={insetsToMargins(insets, ['top'])}
-        numColumns={columnCount}
-        data={recipes}
-        renderItem={recipe => renderRecipe(recipe)}
-        keyExtractor={item => `${item.recipeId}`}
-      />
-    </>
+    <FlatList
+      key={columnCount}
+      showsVerticalScrollIndicator={false}
+      style={insetsToMargins(insets, ['top'])}
+      numColumns={columnCount}
+      data={recipes ?? []}
+      renderItem={recipe => renderRecipe(recipe)}
+      keyExtractor={item => `${item.idMeal}`}
+      nestedScrollEnabled
+    />
   );
 }
 
@@ -85,10 +88,8 @@ const style = StyleSheet.create({
   recipeContainer: {
     borderWidth: 0.4,
     borderColor: 'grey',
-    marginVertical: 7,
     borderRadius: 15,
     justifyContent: 'space-between',
-    marginLeft: margin,
   },
   recipePhoto: {
     borderTopLeftRadius: 15,
@@ -98,9 +99,5 @@ const style = StyleSheet.create({
     marginTop: 3,
     textAlign: 'center',
     marginHorizontal: 5,
-  },
-  categoryText: {
-    marginVertical: 10,
-    textAlign: 'center',
   },
 });

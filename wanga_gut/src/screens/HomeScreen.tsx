@@ -1,22 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Pressable, ScrollView, View} from 'react-native';
-import {ActivityIndicator, Avatar, Divider, Text} from 'react-native-paper';
-import {useTheme} from '@react-navigation/native';
+import {Avatar, Divider, Text} from 'react-native-paper';
+import {useNavigation, useTheme} from '@react-navigation/native';
 
-import Statusbar from '../../components/Statusbar';
-import {style} from '../../app/style';
-import {useCategoryQuery, useRecipesForCategory} from '../../api/the_meal_db';
-import {useAlcoholicFilter} from '../../api/the_cocktail.db';
-import RecipesList from './RecipesList';
+import Statusbar from '../components/Statusbar';
+import {style} from '../app/style';
+import {useCategoryQuery} from '../api/the_meal_db';
+import {useAlcoholicFilter} from '../api/the_cocktail.db';
 
 export default function CategoriesScreen() {
+  const navigation = useNavigation();
   const theme = useTheme();
   const query1 = useCategoryQuery();
-  const [category, setCategory] = useState('');
-  // initial: status=loading, fetchStatus=idle
-  // triggered: status=loading, fetchStatus=fetching
-  // after: status=success, fetchStatus=idle
-  const query2 = useRecipesForCategory(category);
 
   const cocktailQuery1 = useAlcoholicFilter('alcoholic');
   const cocktailQuery2 = useAlcoholicFilter('non_alcoholic');
@@ -35,7 +30,11 @@ export default function CategoriesScreen() {
             <Pressable
               key={cat.idCategory}
               style={[style.center, style.m3]}
-              onPress={() => setCategory(cat.strCategory)}>
+              onPress={() =>
+                navigation.navigate('RecipeCategory', {
+                  category: cat.strCategory,
+                })
+              }>
               <Avatar.Image
                 source={{uri: cat.strCategoryThumb}}
                 style={{backgroundColor: theme.colors.border}}
@@ -102,12 +101,6 @@ export default function CategoriesScreen() {
         </ScrollView>
         <Divider />
       </View>
-      {query2.isFetching && (
-        <View style={[style.flex1, style.center]}>
-          <ActivityIndicator />
-        </View>
-      )}
-      <RecipesList recipes={query2.data} />
     </>
   );
 }

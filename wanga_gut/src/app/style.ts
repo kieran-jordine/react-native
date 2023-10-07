@@ -1,3 +1,4 @@
+import {useTheme} from '@react-navigation/native';
 import {StyleSheet} from 'react-native';
 import {EdgeInsets, useSafeAreaInsets} from 'react-native-safe-area-context';
 
@@ -34,5 +35,14 @@ export function useInsetsToPadding(exclude: margins[]) {
     paddingRight: exclude.includes('right') ? null : insets.right,
     paddingBottom: exclude.includes('bottom') ? null : insets.bottom,
     paddingTop: exclude.includes('top') ? null : insets.top,
+  };
+}
+
+export function useColors() {
+  const theme = useTheme();
+  return {
+    primary: theme.colors.primary,
+    secondary: theme.colors.card,
+    tertiary: theme.colors.notification,
   };
 }
