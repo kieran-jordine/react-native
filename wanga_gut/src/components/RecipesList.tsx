@@ -80,6 +80,7 @@ export default function RecipesList({recipes, columns, space}: Props) {
       renderItem={recipe => renderRecipe(recipe)}
       keyExtractor={item => `${item.idMeal}`}
       nestedScrollEnabled
+      contentInsetAdjustmentBehavior="automatic"
     />
   );
 }

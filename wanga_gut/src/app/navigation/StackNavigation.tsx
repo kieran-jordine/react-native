@@ -11,7 +11,6 @@ import {HeaderLeft, HeaderRight} from './drawer/DrawerHeader';
 import HomeScreen from '../../screens/HomeScreen';
 import RecipeCategoryScreen from '../../screens/RecipeCategoryScreen';
 import RecipeDetailScreen from '../../screens/RecipeDetailScreen';
-import {IconButton} from 'react-native-paper';
 
 export default function StackNavigation() {
   return (
@@ -27,23 +26,8 @@ export default function StackNavigation() {
       <RootStack.Screen
         name="RecipeCategory"
         component={RecipeCategoryScreen}
-        options={({route, navigation}) => ({
+        options={({route}) => ({
           title: route.params.category,
-          // headerBackVisible: true,
-          headerLeft: () => (
-            <IconButton
-              icon={'arrow-back-ios'}
-              style={{marginLeft: -10}}
-              onPress={() => navigation.goBack()}
-            />
-          ),
-          headerRight: () => (
-            <IconButton
-              icon={'more-vert'}
-              onPress={() => console.log('p')}
-              style={{marginRight: -10}}
-            />
-          ),
         })}
       />
       <RootStack.Screen
