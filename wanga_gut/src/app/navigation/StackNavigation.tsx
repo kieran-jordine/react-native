@@ -28,6 +28,9 @@ export default function StackNavigation() {
         component={RecipeCategoryScreen}
         options={({route}) => ({
           title: route.params.category,
+          headerSearchBarOptions: {
+            placement: 'inline',
+          },
         })}
       />
       <RootStack.Screen
